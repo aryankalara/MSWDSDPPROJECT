@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './profilepage.css'
-import config from '../config'
-
-import { useNavigate  } from 'react-router-dom';
+// import config from '../config'
+import { useNavigate } from 'react-router-dom';
 
 export default function ViewCustomerProfile() {
-
   const [sellerData, setSellerData] = useState([]);
-
   useEffect(() => {
     const storedSellerData = localStorage.getItem('seller');
     if (storedSellerData) {
@@ -19,12 +16,11 @@ export default function ViewCustomerProfile() {
   const navigate = useNavigate();
 
   return (
-
     sellerData ? (
       <div className="profile-container">
         <h2>Your Profile</h2>
         <table>
-          <tbody> {/* Wrap table data in tbody */}
+          <tbody>
             <tr>
               <th>Full Name</th>
               <td>{sellerData.name}</td>
@@ -55,12 +51,12 @@ export default function ViewCustomerProfile() {
             </tr>
           </tbody>
         </table>
-        <div className="update-link" onClick={() => { navigate('/updatesellerprofile') }}>
+        <div className="update-link" onClick={() => navigate('/updatesellerprofile')}>
           Update?
         </div>
       </div>
     ) : (
-      <p>No Customer Data Found</p>
+      <p>No Seller Data Found</p>
     )
   );
 }

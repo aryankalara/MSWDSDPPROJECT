@@ -113,70 +113,70 @@ export default function SignUp() {
          
     <title>Login & Registration Form</title> 
     
-    <div class="cont">
-        <div class="forms">
+    <div className="cont">
+        <div className="forms">
    
-            <div class="form login">
-                <span class="title">Registration</span>
+            <div className="form login">
+                <span className="title">Registration</span>
      
                 <form onSubmit={handleSubmit}>
-                    <div class="input-field">
+                    <div className="input-field">
                     <input type="text" id="name" value={formData.name}  placeholder="Enter you Name" onChange={handleChange} required />
-                        <i class="uil uil-user"></i>
+                        <i className="uil uil-user"></i>
                     </div>
 
-                    <div class="input-field">
+                    <div className="input-field">
                         <input type="email" id="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
-                        <i class="uil uil-envelope icon"></i>
+                        <i className="uil uil-envelope icon"></i>
                     </div>
 
-                    <div class="input-field">
+                    <div className="input-field">
                     <select id="gender" value={formData.gender} onChange={handleChange}  required>
                       <option value="">Select Gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="others">Other</option>
                     </select>
-                        <i class="uil uil-user"></i>
+                        <i className="uil uil-user"></i>
                     </div>
 
-                    <div class="input-field">
+                    <div className="input-field">
                     <input type="date" id="dateofbirth" placeholder="Date of Birth" value={formData.dateofbirth} onChange={handleChange} required />
-                        <i class="uil uil-user"></i>
+                        <i className="uil uil-user"></i>
                     </div>
 
-                    <div class="input-field">
+                    <div className="input-field">
                         <input type="text" id="contact" pattern="[6789][0-9]{9}" value={formData.contact} placeholder="Enter your Contact" onChange={handleChange} required />
-                        <i class="uil uil-phone"></i>
+                        <i className="uil uil-phone"></i>
                     </div>
 
-                    <div class="input-field">
+                    <div className="input-field">
                         <input type="text" id="location" value={formData.location} placeholder="Enter your Location" onChange={handleChange} required />
-                        <i class="uil uil-user-location"></i>
+                        <i className="uil uil-user-location"></i>
                     </div>
 
 
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" id="password" value={formData.password} onChange={handleChange} required />
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"  ></i>
+                    <div className="input-field">
+                        <input type="password" className="password" placeholder="Enter your password" id="password" value={formData.password} onChange={handleChange} required />
+                        <i className="uil uil-lock icon"></i>
+                        <i className="uil uil-eye-slash showHidePw"  ></i>
                     </div>
 
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
+                    <div className="checkbox-text">
+                        <div className="checkbox-content">
                             <input type="checkbox" id="termCon"/>
-                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                            <label htmlFor="termCon" className="text">I accepted all terms and conditions</label>
                         </div>
                     </div>
 
-                    <div class="input-field button">
+                    <div className="input-field button">
                         <input type="submit" value="Signup"/>
                     </div>
                 </form>
 
-                <div class="login-signup">
-                    <span class="text">Already a member?
-                        <a href="#" class="text login-link">Login Now</a>
+                <div className="login-signup">
+                    <span className="text">Already a member?
+                        <a href="#" className="text login-link">Login Now</a>
                     </span>
                 </div>
             </div>

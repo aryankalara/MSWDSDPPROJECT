@@ -127,31 +127,31 @@ export default function Login({onAdminLogin, onSellerLogin, onCustomerLogin})
 
 
     
-    <div class="container">
-        <div class="forms">
-            <div class="form login" >
-                <span class="title">Login</span>
+    <div className="container">
+        <div className="forms">
+            <div className="form login" >
+                <span className="title">Login</span>
 
                 <form onSubmit={handleSubmit} >
-                    <div class="input-field">
+                    <div className="input-field">
                         <input type="text" placeholder="Enter your email"  id="email" value={formData.username} onChange={handleChange} required />
-                        <i class="uil uil-envelope icon"></i>
+                        <i className="uil uil-envelope icon"></i>
                     </div>
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" id="password" value={formData.password} onChange={handleChange} required />
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw" ></i>
+                    <div className="input-field">
+                        <input type="password" className="password" placeholder="Enter your password" id="password" value={formData.password} onChange={handleChange} required />
+                        <i className="uil uil-lock icon"></i>
+                        <i className="uil uil-eye-slash showHidePw" ></i>
                     </div>
 
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
+                    <div className="checkbox-text">
+                        <div className="checkbox-content">
                             <input type="checkbox" id="logCheck"/>
-                            <label for="logCheck" class="text">Remember me</label>
+                            <label htmlFor="logCheck" className="text">Remember me</label>
                         </div>
                         
                     </div>
 
-                    <div class="input-field button" >
+                    <div className="input-field button" >
                     <input type="submit" value="Login"/>
                     </div>
                 </form>
@@ -160,9 +160,9 @@ export default function Login({onAdminLogin, onSellerLogin, onCustomerLogin})
 
 
 
-                <div class="login-signup">
-                    <span class="text">Not a member?
-                        <a href="#" class="text signup-link" >Signup Now</a>
+                <div className="login-signup">
+                    <span className="text">Not a member?
+                        <a href="#" className="text signup-link" >Signup Now</a>
                     </span>
                 </div>
             </div>
