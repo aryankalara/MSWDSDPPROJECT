@@ -17,18 +17,20 @@ export default function SellerHomePage() {
     }
   }, []);
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(`${config.url}/viewsellerproducts/${sellerData.email}`);
-      setProducts(response.data);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-  
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${config.url}/viewsellerproducts/${sellerData.email}`);
+        setProducts(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+  
     fetchProducts();
-  }, []);
+  }, [sellerData.email]);
+  
+  
 
   const navigate = useNavigate();
 
