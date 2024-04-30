@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import "./Product.css";
-import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
 export default function CustomerPurchase() {
   const [customerData, setCustomerData] = useState([]);
-  let cemail = "";
+  setCustomerData(customerData)
+  let cemailRef = useRef("");
 
   useEffect(() => {
     const storedCustomerData = localStorage.getItem('customer');
     if (storedCustomerData) {
       const parsedCustomerData = JSON.parse(storedCustomerData);
       setCustomerData(parsedCustomerData)
-      cemail = parsedCustomerData.email
+      cemailRef.current = parsedCustomerData.email;
     }
   }, []);
 
@@ -21,8 +22,8 @@ export default function CustomerPurchase() {
 
   const fetchProducts = async () => {
     try {
-      console.log(cemail)
-      const response = await axios.get(`${config.url}/getpurchased/${cemail}`);
+      console.log(cemailRef.current)
+      const response = await axios.get(`${config.url}/getpurchased/${cemailRef.current}`);
       console.log(response.data)
       setProducts(response.data);
     } catch (error) {
@@ -33,8 +34,6 @@ export default function CustomerPurchase() {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  const navigate = useNavigate();
 
   return (
     <div>

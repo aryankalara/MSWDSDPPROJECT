@@ -1,5 +1,4 @@
 import { BsFillBagFill } from "react-icons/bs";
-import config from '../config'
 
 const Card = ({ img, title, star, reviews, prevPrice, newPrice }) => {
   return (

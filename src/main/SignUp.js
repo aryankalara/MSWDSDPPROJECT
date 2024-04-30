@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import'./StyleShee.css'
-import { useNavigate } from 'react-router-dom';
 import config from '../config'
 
 export default function SignUp() {
@@ -176,7 +175,7 @@ export default function SignUp() {
 
                 <div className="login-signup">
                     <span className="text">Already a member?
-                        <a href="#" className="text login-link">Login Now</a>
+                        <a href="/" className="text login-link">Login Now</a>
                     </span>
                 </div>
             </div>

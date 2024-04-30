@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './ProductPage.css'
 import config from '../config';
@@ -14,20 +14,21 @@ export default function ProductPage() {
     const [customerData, setCustomerData] = useState("");
     const [message, setMessage] = useState('');
     const [serror, setSerror] = useState('');
+    setSerror(serror)
     const [status, setStatus] = useState('');
 
-    const productpage = async () => {
+    const productpage = useCallback(async () => {
         try {
             const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
             setData(response.data);
         } catch (error) {
             console.log(error);
         }
-    };
+    }, [pid]);
 
     useEffect(() => {
         productpage();
-    }, []);
+      }, [productpage]);
 
     useEffect(() => {
         const storedCustomerData = localStorage.getItem('customer');
@@ -86,7 +87,8 @@ export default function ProductPage() {
 
     useEffect(() => {
         getcartstatus(pid, email);
-    }, []);
+      }, [pid, email]);
+      
 
     return (
         <div>
@@ -114,7 +116,7 @@ export default function ProductPage() {
                         <div class="add-bag-btn" onClick={() => navigate('/recommendproduct', { state: { param1: data[0].productname, param2: customerData.email } })}>Recommend</div>
                         <div class="add-bag-btn" onClick={() => navigate('/pricecomparision', { state: { param1: data[0].productid } })}>Price Compare</div>
                     </div>
-                    <a href="#" class="help-btn">Need Any Help?</a>
+                    <a href="/contact" class="help-btn">Need Any Help?</a>
                 </div>
             </section>
         </div>

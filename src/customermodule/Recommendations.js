@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../config';
 import './viewrecommendations.css';
@@ -8,6 +8,7 @@ export default function ProductPage() {
   const [recommendations, setRecommendations] = useState([]);
   const [customerData, setCustomerData] = useState("");
   const [error, setError] = useState('');
+  setError(error)
 
   const navigate = useNavigate();
 

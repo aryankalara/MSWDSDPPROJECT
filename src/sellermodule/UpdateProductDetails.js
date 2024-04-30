@@ -29,22 +29,24 @@ export default function UpdateProductDetails() {
 
 
 
-  const fetchProductDetails = async () => {
-    try {
-      const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
-      console.log(response.data);
-      setProductData(response.data[0]);
-      console.log(productData + '[[[[[[[[[[');
-      setInitialProductData(response.data);
-    } catch (error) {
-      setError(error.response.data);
-      console.log(error);
-    }
-  };
-  
   useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
+        console.log(response.data);
+        setProductData(response.data[0]);
+        console.log(productData + '[[[[[[[[[[');
+        setInitialProductData(response.data);
+      } catch (error) {
+        setError(error.response.data);
+        console.log(error);
+      }
+    };
+    
     fetchProductDetails();
-  }, []);
+  }, [pid,productData]);
+  
+  
   
 
   const handleChange = (e) => {

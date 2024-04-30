@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate,useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
 import './recommendpage.css'
 import config from '../config'
 
@@ -22,7 +22,6 @@ export default function Recommend() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target; 

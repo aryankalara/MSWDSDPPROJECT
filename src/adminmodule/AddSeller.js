@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import './page.css'
 import config from '../config'
 
@@ -59,43 +58,43 @@ export default function AddSeller() {
     }
   };
 
-  const change = () =>
-  {
-      let container = document.querySelector(".container");
-      let pwShowHide = document.querySelectorAll(".showHidePw");
-      let pwFields = document.querySelectorAll(".password");
-      let signUp = document.querySelector(".signup-link");
-      let login = document.querySelector(".login-link");
+  // const change = () =>
+  // {
+  //     let container = document.querySelector(".container");
+  //     let pwShowHide = document.querySelectorAll(".showHidePw");
+  //     let pwFields = document.querySelectorAll(".password");
+  //     let signUp = document.querySelector(".signup-link");
+  //     let login = document.querySelector(".login-link");
     
-      pwShowHide = document.querySelectorAll(".showHidePw");
-      pwShowHide.forEach(eyeIcon =>{
-          eyeIcon.addEventListener("click", ()=>{
-              pwFields.forEach(pwField =>{
-                  if(pwField.type ==="password"){
-                      pwField.type = "text";
+  //     pwShowHide = document.querySelectorAll(".showHidePw");
+  //     pwShowHide.forEach(eyeIcon =>{
+  //         eyeIcon.addEventListener("click", ()=>{
+  //             pwFields.forEach(pwField =>{
+  //                 if(pwField.type ==="password"){
+  //                     pwField.type = "text";
       
-                      pwShowHide.forEach(icon =>{
-                          icon.classList.replace("uil-eye-slash", "uil-eye");
-                      });
-                  }else{
-                      pwField.type = "password";
+  //                     pwShowHide.forEach(icon =>{
+  //                         icon.classList.replace("uil-eye-slash", "uil-eye");
+  //                     });
+  //                 }else{
+  //                     pwField.type = "password";
       
-                      pwShowHide.forEach(icon =>{
-                          icon.classList.replace("uil-eye", "uil-eye-slash");
-                      });
-                  }
-              }); 
-          });
-      });
+  //                     pwShowHide.forEach(icon =>{
+  //                         icon.classList.replace("uil-eye", "uil-eye-slash");
+  //                     });
+  //                 }
+  //             }); 
+  //         });
+  //     });
   
-      signUp.addEventListener("click", ( )=>{
-          container.classList.add("active");
-      });
+  //     signUp.addEventListener("click", ( )=>{
+  //         container.classList.add("active");
+  //     });
   
-      login.addEventListener("click", ( )=>{
-          container.classList.remove("active");
-      });
-  };
+  //     login.addEventListener("click", ( )=>{
+  //         container.classList.remove("active");
+  //     });
+  // };
 
   return (
     <div>

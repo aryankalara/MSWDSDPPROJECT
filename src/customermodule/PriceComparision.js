@@ -10,18 +10,18 @@ export default function ProductPage() {
   
   const [data, setData] = useState([{}]);
 
-  const productpage = async () => {
-    try {
-      const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const productpage = async () => {
+      try {
+        const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     productpage();
-  }, [productpage]);
+  }, [pid]);
 
   return (
     <div>

@@ -41,8 +41,6 @@ export default function SellerProducts()
 
   const navigate = useNavigate();
 
-  const [product, setProduct] = useState({});
-  const [error, setError] = useState('');
 
   const productpage = async (productid) => {
     try 
@@ -53,7 +51,7 @@ export default function SellerProducts()
     }
     catch (error)
     {
-      setError(error.response.data);
+      console.log(error)
     }
   };
 
