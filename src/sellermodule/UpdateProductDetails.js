@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
-import { useLocation ,useNavigate  } from 'react-router-dom';
+import { useLocation  } from 'react-router-dom';
 import './StyleSheet.css'
 import config from '../config'
 
@@ -25,30 +25,27 @@ export default function UpdateProductDetails() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [initialProductData, setInitialProductData] = useState({});
+  setInitialProductData(initialProductData)
 
 
 
-  const fetchproductdetails = async () => {
-    try 
-    {
+  const fetchProductDetails = async () => {
+    try {
       const response = await axios.get(`${config.url}/getproductdetails/${pid}`);
-      console.log(response.data)
-
-      setProductData(response.data[0])
-      console.log(productData+"[[[[[[[[[[")
-      setInitialProductData(response.data)
-    }
-    catch (error) 
-    {
+      console.log(response.data);
+      setProductData(response.data[0]);
+      console.log(productData + '[[[[[[[[[[');
+      setInitialProductData(response.data);
+    } catch (error) {
       setError(error.response.data);
-      console.log(error)
+      console.log(error);
     }
   };
-
-
+  
   useEffect(() => {
-    fetchproductdetails();
+    fetchProductDetails();
   }, []);
+  
 
   const handleChange = (e) => {
     setProductData({ ...productData, [e.target.id]: e.target.value });

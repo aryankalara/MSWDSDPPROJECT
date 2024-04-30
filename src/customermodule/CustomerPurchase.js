@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Product.css";
 import { useNavigate } from 'react-router-dom';
-import config from '../config'
-import { BsFillBagFill } from "react-icons/bs";
+import config from '../config';
 
 export default function CustomerPurchase() {
   const [customerData, setCustomerData] = useState([]);
@@ -41,16 +40,16 @@ export default function CustomerPurchase() {
     <div>
       <section className="card-container" >
         {products.length > 0 ? (
-          products.map((product, index) => (
+          products.map((product) => (
             <div key={product.productid} className="product-card">
-              <img src={`${config.url}/productimage/${product.file}`} alt="Product Image"/>
+              <img src={`${config.url}/productimage/${product.file}`} alt={`Product: ${product.productname}`} />
               <div className="product-det">
-                  <h2>{product.productname}</h2>
-                  <p>{product.description}</p>
+                <h2>{product.productname}</h2>
+                <p>{product.description}</p>
               </div>
               <div className="price-add-to-cart">
-                  <p>&#8377;{product.newprice}</p>
-                  <b>Purchased</b>
+                <p>&#8377;{product.newprice}</p>
+                <b>Purchased</b>
               </div>
             </div>
           ))

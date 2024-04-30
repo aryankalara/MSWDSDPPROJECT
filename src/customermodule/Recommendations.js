@@ -1,52 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import config from '../config';
 import './viewrecommendations.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductPage() {
   const [recommendations, setRecommendations] = useState([]);
   const [customerData, setCustomerData] = useState("");
-  let cemail = '';
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCustomerData = localStorage.getItem('customer');
     if (storedCustomerData) {
       const parsedCustomerData = JSON.parse(storedCustomerData);
       setCustomerData(parsedCustomerData);
-      cemail = parsedCustomerData.email;
-      console.log(cemail);
+      const cemail = parsedCustomerData.email;
+      fetchRecommendations(cemail);
     }
   }, []);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = async (cemail) => {
     try {
       const response = await axios.get(`${config.url}/viewrecommendations/${cemail}`);
-      console.log(response.data + "pp");
       setRecommendations(response.data);
     } catch (error) {
       console.error(error.message);
+      setError(error.message);
     }
   };
 
-  useEffect(() => {
-    fetchRecommendations();
-  }, []);
-
-  const navigate = useNavigate();
-
-  const [data, setData] = useState([{}]);
-  const [error, setError] = useState('');
-
   const toProductPage = async (productname) => {
     try {
-      console.log(productname + "[[[");
       const response = await axios.get(`${config.url}/getproductdetailspname/${productname}`);
-      console.log(response.data);
-      setData(response.data);
-      navigate('/productpage', { state: { param1: response.data[0].productid, param2: cemail } });
+      navigate('/productpage', { state: { param1: response.data[0].productid, param2: customerData.email } });
     } catch (error) {
-      setError(error.response.data);
+      setError(error.message);
     }
   };
 

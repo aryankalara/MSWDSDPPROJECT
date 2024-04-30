@@ -20,7 +20,7 @@ export default function AddSeller() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e) => 
   {

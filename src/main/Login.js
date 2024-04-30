@@ -162,7 +162,7 @@ export default function Login({onAdminLogin, onSellerLogin, onCustomerLogin})
 
                 <div className="login-signup">
                     <span className="text">Not a member?
-                        <a href="#" className="text signup-link" >Signup Now</a>
+                        <a href="/signup" className="text signup-link" >Signup Now</a>
                     </span>
                 </div>
             </div>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Route, Routes, Link , useNavigate } from 'react-router-dom'
-import config from '../config'
+// import config from '../config'
 
 import CustomerHome from './CustomerHome'
 import CustomerAbout from './CustomerAbout'
@@ -28,10 +28,11 @@ export const Header = () => {
     window.location.reload()
   };
 
-  const [showMenu, setShoMenu] = useState(false);
-  const handleshowMenu =()=>{
-  setShoMenu(preve=>!preve)
-  }
+  // const [showMenu, setShoMenu] = useState(false);
+  // setShoMenu(showMenu)
+  // const handleshowMenu =()=>{
+  // setShoMenu(preve=>!preve)
+  // }
   
   return (
     <div>

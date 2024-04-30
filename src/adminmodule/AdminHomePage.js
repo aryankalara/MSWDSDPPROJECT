@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Product.css";
 import { useNavigate } from 'react-router-dom';
-import config from '../config'
+import config from '../config';
 import { BsFillBagFill } from "react-icons/bs";
 
 export default function AdminHomePage() {

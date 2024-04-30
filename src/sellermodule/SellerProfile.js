@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './profilepage.css'
-// import config from '../config'
 import { useNavigate } from 'react-router-dom';
 
 export default function ViewCustomerProfile() {

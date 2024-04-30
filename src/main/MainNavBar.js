@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import './Navbar.css'
 import Login from './Login'
 import SignUp from './SignUp';
-import config from '../config'
+// import config from '../config'
 export default function MainNavBar({onAdminLogin, onSellerLogin, onCustomerLogin}) {
   return (
     <div>

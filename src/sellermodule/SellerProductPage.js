@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ProductPage.css'
 import config from '../config';
-import { useLocation ,useNavigate  } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 export default function SellerProductPage() {
     const location = useLocation()
     const pid = location.state;
@@ -88,7 +88,7 @@ export default function SellerProductPage() {
     
     <div class="swiper-slide">
         
-    <img src={`${config.url}/productimage/${data[0].file}`} alt="image"/>
+    <img src={`${config.url}/productimage/${data[0].file}`} alt=""/>
     </div>
     
     </div>

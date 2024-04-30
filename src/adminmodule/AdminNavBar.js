@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Routes, Link , useNavigate } from 'react-router-dom'
 
 import './Navbar.css'
-import config from '../config'
+// import config from '../config'
 
 import AdminHomePage from './AdminHomePage'
 import ViewCustomers from "./ViewCustomers";

@@ -2,40 +2,33 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Product.css";
 import { useNavigate } from 'react-router-dom';
-import config from '../config'
+import config from '../config';
 import { BsFillBagFill } from "react-icons/bs";
 
 export default function CustomerCart() {
   const [customerData, setCustomerData] = useState([]);
-  let cemail = "";
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCustomerData = localStorage.getItem('customer');
     if (storedCustomerData) {
       const parsedCustomerData = JSON.parse(storedCustomerData);
       setCustomerData(parsedCustomerData);
-      cemail = parsedCustomerData.email;
+      fetchProducts(parsedCustomerData.email); // Fetch products after setting customer data
     }
   }, []);
 
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
+  const fetchProducts = async (cemail) => { // Moved cemail into the fetchProducts function
     try {
-      console.log(cemail)
+      console.log(cemail);
       const response = await axios.get(`${config.url}/getaddedtocart/${cemail}`);
-      console.log(response.data)
+      console.log(response.data);
       setProducts(response.data);
     } catch (error) {
       console.error(error.message);
     }
   };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const navigate = useNavigate();
 
   const productpage = async (productid) => {
     try {
