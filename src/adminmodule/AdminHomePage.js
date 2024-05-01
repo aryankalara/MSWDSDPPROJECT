@@ -24,7 +24,7 @@ export default function AdminHomePage() {
 
   const productpage = async (productid) => {
     try {
-      navigate('/adminproductpage', { state: productid });
+      navigate('/adminhome', { state: productid });
     } catch (error) {
       console.log(error);
     }
