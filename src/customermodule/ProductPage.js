@@ -14,7 +14,6 @@ export default function ProductPage() {
     const [customerData, setCustomerData] = useState("");
     const [message, setMessage] = useState('');
     const [serror, setSerror] = useState('');
-    setSerror(serror)
     const [status, setStatus] = useState('');
 
     const productpage = useCallback(async () => {
@@ -28,7 +27,7 @@ export default function ProductPage() {
 
     useEffect(() => {
         productpage();
-      }, [productpage]);
+    }, [productpage]);
 
     useEffect(() => {
         const storedCustomerData = localStorage.getItem('customer');
@@ -46,6 +45,7 @@ export default function ProductPage() {
         } catch (error) {
             setSerror(error.response.data);
             setMessage('');
+            console.log(serror)
         }
     }
 
@@ -71,8 +71,6 @@ export default function ProductPage() {
                 setSerror(error.response.data);
                 setMessage('');
             }
-        } else {
-            productpage();
         }
     }
 
@@ -87,36 +85,35 @@ export default function ProductPage() {
 
     useEffect(() => {
         getcartstatus(pid, email);
-      }, [pid, email]);
-      
+    }, [pid, email]);
 
     return (
         <div>
             {message ? <h4 align="center">{message}</h4> : null}
-            <section class="product-details">
-                <div class="product-img">
+            <section className="product-details">
+                <div className="product-img">
                     <img src={`${config.url}/productimage/${data[0].file}`} alt={data[0].productname} />
                 </div>
-                <div class="product-text">
+                <div className="product-text">
                     <h3>{data[0].productname}</h3>
-                    <span class="product-price">&#8377;{data[0].newprice}</span>
+                    <span className="product-price">&#8377;{data[0].newprice}</span>
                     <p>{data[0].description}</p>
                     {status === 'Add to cart' ? (
-                        <div class="product-button">
-                            <div class="add-bag-btn" onClick={() => addtocart(data[0].productid, customerData.email)}>{status}</div>
-                            <div class="add-bag-btn" onClick={() => productpurchase(data[0].productid, customerData.email)}>Purchase</div>
+                        <div className="product-button">
+                            <div className="add-bag-btn" onClick={() => addtocart(data[0].productid, customerData.email)}>{status}</div>
+                            <div className="add-bag-btn" onClick={() => productpurchase(data[0].productid, customerData.email)}>Purchase</div>
                         </div>
                     ) : (
-                        <div class="product-button">
-                            <div class="add-bag-btn" onClick={() => removefromcart(data[0].productid, customerData.email)}>Remove from Cart</div>
-                            <div class="add-bag-btn" onClick={() => productpurchase(data[0].productid, customerData.email)}>Purchase</div>
+                        <div className="product-button">
+                            <div className="add-bag-btn" onClick={() => removefromcart(data[0].productid, customerData.email)}>Remove from Cart</div>
+                            <div className="add-bag-btn" onClick={() => productpurchase(data[0].productid, customerData.email)}>Purchase</div>
                         </div>
                     )}
-                    <div class="product-button">
-                        <div class="add-bag-btn" onClick={() => navigate('/recommendproduct', { state: { param1: data[0].productname, param2: customerData.email } })}>Recommend</div>
-                        <div class="add-bag-btn" onClick={() => navigate('/pricecomparision', { state: { param1: data[0].productid } })}>Price Compare</div>
+                    <div className="product-button">
+                        <div className="add-bag-btn" onClick={() => navigate('/recommendproduct', { state: { param1: data[0].productname, param2: customerData.email } })}>Recommend</div>
+                        <div className="add-bag-btn" onClick={() => navigate('/pricecomparision', { state: { param1: data[0].productid } })}>Price Compare</div>
                     </div>
-                    <a href="/contact" class="help-btn">Need Any Help?</a>
+                    <a href="/contact" className="help-btn">Need Any Help?</a>
                 </div>
             </section>
         </div>

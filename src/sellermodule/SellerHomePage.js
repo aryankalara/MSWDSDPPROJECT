@@ -20,17 +20,17 @@ export default function SellerHomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${config.url}/viewsellerproducts/${sellerData.email}`);
-        setProducts(response.data);
+        if (sellerData && sellerData.email) {
+          const response = await axios.get(`${config.url}/viewsellerproducts/${sellerData.email}`);
+          setProducts(response.data);
+        }
       } catch (error) {
         console.error(error.message);
       }
     };
   
     fetchProducts();
-  }, [sellerData.email]);
-  
-  
+  }, [sellerData]);
 
   const navigate = useNavigate();
 

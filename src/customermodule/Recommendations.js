@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 export default function ProductPage() {
   const [recommendations, setRecommendations] = useState([]);
   const [customerData, setCustomerData] = useState("");
-  const [error, setError] = useState('');
-  setError(error)
 
   const navigate = useNavigate();
 
@@ -28,7 +26,6 @@ export default function ProductPage() {
       setRecommendations(response.data);
     } catch (error) {
       console.error(error.message);
-      setError(error.message);
     }
   };
 
@@ -37,7 +34,7 @@ export default function ProductPage() {
       const response = await axios.get(`${config.url}/getproductdetailspname/${productname}`);
       navigate('/productpage', { state: { param1: response.data[0].productid, param2: customerData.email } });
     } catch (error) {
-      setError(error.message);
+      console.log(error)
     }
   };
 

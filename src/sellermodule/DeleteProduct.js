@@ -6,7 +6,9 @@ import config from '../config';
 
 export default function CustomerPurchase() {
   const [sellerData, setSellerData] = useState([]);
-  
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const storedSellerData = localStorage.getItem('seller');
     if (storedSellerData) {
@@ -17,8 +19,6 @@ export default function CustomerPurchase() {
     }
   }, []);
 
-  const [products, setProducts] = useState([]);
-
   const fetchProducts = async (semail) => {
     try {
       const response = await axios.get(`${config.url}/viewsellerproducts/${semail}`);
@@ -28,23 +28,15 @@ export default function CustomerPurchase() {
     }
   };
 
-  const [message, setMessage] = useState('');
-  setMessage(message)
-  const [error, setError] = useState('');
-  setError(error)
-  const navigate = useNavigate();
-
   const deleteSellerProduct = async (productid, selleremail) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         const response = await axios.delete(`${config.url}/deletesellerproduct/${productid}/${selleremail}`);
-        setMessage(response.data);
+        console.log(response.data);
         navigate('/deleteproducts');
         await fetchProducts(selleremail);
-        setError('');
       } catch (error) {
-        setError(error.response.data);
-        setMessage('');
+        console.error(error.response.data);
       }
     }
   }

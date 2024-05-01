@@ -7,8 +7,8 @@ import { useLocation } from 'react-router-dom';
 export default function ProductPage() {
   const location = useLocation();
   const pid = location.state.param1;
-  
-  const [data, setData] = useState([{}]);
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const productpage = async () => {
@@ -26,20 +26,24 @@ export default function ProductPage() {
   return (
     <div>
       <section>
-        {data[0].comparisionlink1 && data[0].comparisionlink2 ? (
+        {data.length > 0 && data[0].comparisionlink1 && data[0].comparisionlink2 ? (
           <table>
-            <tr>
-              <th>Product Name</th>
-              <th>Product Price</th>
-              <th>Comparision Link 1</th>
-              <th>Comparision Link 2</th>
-            </tr>
-            <tr>
-              <td>{data[0].productname}</td>
-              <td>{data[0].newprice}</td>
-              <td><a href={data[0].comparisionlink1} target="_blank" rel="noopener noreferrer">{data[0].comparisionlink1}</a></td>
-              <td><a href={data[0].comparisionlink2} target="_blank" rel="noopener noreferrer">{data[0].comparisionlink2}</a></td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Comparison Link 1</th>
+                <th>Comparison Link 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{data[0].productname}</td>
+                <td>{data[0].newprice}</td>
+                <td><a href={data[0].comparisionlink1} target="_blank" rel="noopener noreferrer">{data[0].comparisionlink1}</a></td>
+                <td><a href={data[0].comparisionlink2} target="_blank" rel="noopener noreferrer">{data[0].comparisionlink2}</a></td>
+              </tr>
+            </tbody>
           </table>
         ) : (
           <div>No Data Found</div>
